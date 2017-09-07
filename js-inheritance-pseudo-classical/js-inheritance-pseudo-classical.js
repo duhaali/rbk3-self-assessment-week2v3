@@ -6,13 +6,11 @@
 //   var myPhone = new Phone();
 //   var mySmartPhone = new SmartPhone();
 //
-
 // DO NOT MODIFY FUNCTIONS `makePhone` AND `makeSmartPhone`
 // USE THE CONSTRUCTOR FUNCTIONS LOCATED AT THE END OF THIS FILE
 
-var makePhone = function(phoneNumber) {
-  this.result = {};
-  this.result.phoneNumber = phoneNumber;
+var Phone = function(phoneNumber) {
+  this.phoneNumber = phoneNumber;
 };
 
 this.prototype.send = function(recipientPhoneNumber, message) {
@@ -21,15 +19,15 @@ this.prototype.send = function(recipientPhoneNumber, message) {
 
 
 
-var makeSmartPhone = function(phoneNumber, email) {
-  makePhone.call(this,phoneNumber)
+var SmartPhone = function(phoneNumber, email) {
+  Phone.call(this,phoneNumber)
   this.oldSend = this.send;
   this.email = this.email;
   
 };
 
-makeSmartPhone.prototype=Objects.create(makePhone.prototype);
-makeSmartPhone.prototype.constructor=makeSmartPhone;
+SmartPhone.prototype=Objects.create(Phone.prototype);
+SmartPhone.prototype.constructor=SmartPhone;
 
 this.prototype.send = function(recipientPhoneNumberOrEmail, message) {
     if (typeof recipientPhoneNumberOrEmail === 'number') {
@@ -41,7 +39,3 @@ this.prototype.send = function(recipientPhoneNumberOrEmail, message) {
   };
 
 
-
-//  const p1 = new makePhone();
-//  const p2 = new makeSmartPhone();
-//
